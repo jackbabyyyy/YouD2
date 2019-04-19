@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/section"/>
+        <LinearLayout
+
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+
+                android:textSize="@dimen/text14"
+                android:textColor="@color/color999"
+                android:paddingLeft="16dp"
+                android:text="计费单价："
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:textColor="@color/color333"
+                tools:text="jdjsdfsfjsdfjsdfj"
+                android:textSize="@dimen/text14"
+                android:id="@+id/content"
+                android:paddingLeft="25dp"
+                android:background="@drawable/edit_bg"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+
+                android:textSize="@dimen/text14"
+                android:textColor="@color/color999"
+                android:paddingLeft="16dp"
+                android:text="封 顶 值："
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:textColor="@color/color333"
+                tools:text="jdjsdfsfjsdfjsdfj"
+                android:textSize="@dimen/text14"
+                android:id="@+id/content2"
+                android:paddingLeft="25dp"
+                android:background="@drawable/edit_bg"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/bar"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

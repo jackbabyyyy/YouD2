@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/bar_search"/>
+
+
+
+    <com.qmuiteam.qmui.widget.QMUITabSegment
+        android:id="@+id/tabSegment"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/tab_panel_bg"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/contentViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fitsSystemWindows="true"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:fitsSystemWindows="true"
+        android:id="@+id/btn"
+        android:layout_marginRight="26dp"
+        android:layout_marginLeft="26dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="确定分配"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom"
+        android:background="@mipmap/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+
+    <LinearLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="125dp"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="16dp"
+            android:text="设置线分润："
+            android:textColor="@color/color999"
+            android:textSize="@dimen/text14"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:hint="设置下级代理的分润比例"
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_bg"
+                android:paddingLeft="25dp"
+                android:textColor="@color/color333"
+                android:textColorHint="@color/color999"
+                android:textSize="@dimen/text14"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+
+
+        <TextView
+            android:layout_marginTop="8dp"
+
+            android:textSize="@dimen/text14"
+            android:textColor="@color/color999"
+            android:paddingLeft="16dp"
+            android:text="设置柜分润："
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginRight="15dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+
+            <EditText
+                android:hint="设置下级代理的分润比例"
+                android:textColor="@color/color333"
+                android:textColorHint="@color/color999"
+                android:textSize="@dimen/text14"
+                android:id="@+id/cabinet"
+                android:paddingLeft="25dp"
+                android:background="@drawable/edit_bg"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"/>
+
+            <TextView
+                android:text="注：例如自己分润为80%,设置下级分润可输入80%一下的数值！"
+                android:textColor="@color/color999"
+                android:textSize="@dimen/text12"
+                android:id="@+id/des"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/qmui_config_color_white"
+        android:background="@drawable/btn_selector"
+        android:id="@+id/bn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+
+        android:textSize="@dimen/text16"
+
+
+
+        android:text="确定"
+        />
+
+
+
+
+</LinearLayout>

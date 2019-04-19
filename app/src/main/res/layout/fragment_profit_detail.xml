@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/bar_search"/>
+
+
+
+
+
+     <android.support.constraint.ConstraintLayout
+         android:background="@mipmap/profit_detail"
+         android:layout_marginBottom="24dp"
+         android:layout_width="match_parent"
+         android:layout_height="133dp">
+
+         <TextView
+
+             android:id="@+id/name"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="30dp"
+             android:layout_marginTop="20dp"
+             android:textColor="@color/white"
+             android:textSize="@dimen/text18"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             tools:text="李秀峰"/>
+
+         <TextView
+
+             android:paddingLeft="2dp"
+             android:paddingRight="2dp"
+             android:id="@+id/type"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="8dp"
+             android:background="@color/white"
+             android:textColor="@color/error"
+             android:textSize="@dimen/text8"
+             app:layout_constraintBaseline_toBaselineOf="@+id/name"
+             app:layout_constraintStart_toEndOf="@+id/name"
+             tools:text="代理商"/>
+
+         <TextView
+             android:textColor="@color/white"
+             android:textSize="@dimen/text13"
+             android:id="@+id/textView4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="12dp"
+             android:text="总收益"
+             app:layout_constraintBottom_toTopOf="@+id/textView6"
+             app:layout_constraintEnd_toEndOf="@+id/textView6"/>
+
+         <TextView
+             android:textColor="@color/white"
+             android:textSize="@dimen/text18"
+             android:id="@+id/textView6"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="30dp"
+             android:layout_marginEnd="30dp"
+             android:text=""
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"/>
+
+         <TextView
+             android:textColor="@color/white"
+             android:textSize="@dimen/text13"
+             android:id="@+id/textView8"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="12dp"
+             android:text="订单数"
+             app:layout_constraintBottom_toTopOf="@+id/profit"
+             app:layout_constraintEnd_toEndOf="@+id/profit"/>
+
+         <TextView
+             android:textColor="@color/white"
+             android:textSize="@dimen/text18"
+             android:id="@+id/profit"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginEnd="32dp"
+             android:text=""
+             app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+             app:layout_constraintEnd_toStartOf="@+id/textView6"/>
+
+     </android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+    <include layout="@layout/divier_title"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+</LinearLayout>

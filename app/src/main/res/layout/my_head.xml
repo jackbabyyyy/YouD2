@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/content"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:clipChildren="false"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:background="@mipmap/icon_bg_me"
+        android:layout_width="match_parent"
+        android:layout_height="202dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:src="@mipmap/icon_mine_avatar"
+            android:id="@+id/circleImageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="82dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            tools:text="追梦股份天冬"
+            android:textSize="@dimen/text15"
+            android:textColor="@color/white"
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toTopOf="@+id/circleImageView"/>
+    </android.support.constraint.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="-40dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/radius_bg"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"/>
+
+            <LinearLayout
+                android:id="@+id/set"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:src="@mipmap/icon_mine_setting"
+                    android:id="@+id/ivLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="分润设置"
+                    android:textColor="@color/color333"
+                    android:textSize="@dimen/text13"/>
+
+            </LinearLayout>
+            
+            <View
+                android:layout_gravity="center_vertical"
+                android:background="@color/divider"
+                android:layout_width="1dp"
+                android:layout_height="30dp"/>
+
+            <LinearLayout
+                android:id="@+id/info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:src="@mipmap/icon_mine_info"
+                    android:id="@+id/ivRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="个人信息"
+                    android:textColor="@color/color333"
+                    android:textSize="@dimen/text13"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <include layout="@layout/divier_title"
+                />
+
+
+
+
+</LinearLayout>
+
+
+</FrameLayout>

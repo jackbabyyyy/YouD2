@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+   <ScrollView
+       android:background="@color/content"
+       android:layout_marginTop="?attr/qmui_topbar_height"
+       android:scrollbars="none"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+
+   <include layout="@layout/home_top"/>
+
+
+      <RelativeLayout
+          android:descendantFocusability="blocksDescendants"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+
+   <android.support.v7.widget.RecyclerView
+       android:layout_marginTop="15dp"
+
+       android:scrollbars="none"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="15dp"
+       android:background="@drawable/radius_bg"
+       android:id="@+id/recycler_mid"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+
+   </android.support.v7.widget.RecyclerView>
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:descendantFocusability="blocksDescendants"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+   <android.support.v7.widget.RecyclerView
+       android:scrollbars="none"
+       android:layout_marginTop="22dp"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="15dp"
+       android:id="@+id/recycler_bot"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+   </android.support.v7.widget.RecyclerView>
+      </RelativeLayout>
+
+   </LinearLayout>
+
+   </ScrollView>
+
+
+   <com.qmuiteam.qmui.widget.QMUITopBar
+       android:id="@+id/bar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+   </com.qmuiteam.qmui.widget.QMUITopBar>
+
+
+
+</FrameLayout>

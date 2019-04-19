@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+
+            android:id="@+id/type"
+            android:layout_marginTop="80dp"
+           style="@style/text_item"
+            android:text="指定设备弹出"
+            android:drawableRight="@mipmap/right"
+            android:drawableLeft="@mipmap/check_type"
+            />
+
+        <TextView
+            android:id="@+id/type2"
+             android:layout_marginTop="30dp"
+             style="@style/text_item"
+            android:drawableRight="@mipmap/right"
+            android:text="一键弹出所有的锁"
+            android:drawableLeft="@mipmap/check_type2"
+           />
+
+
+    </LinearLayout>
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

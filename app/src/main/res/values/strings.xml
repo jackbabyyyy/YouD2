@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">幽电</string>
+
+    <string-array name="segment_control_arrays_1">
+        <item>代理商</item>
+        <item>商户</item>
+
+    </string-array>
+</resources>

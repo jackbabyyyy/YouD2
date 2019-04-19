@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:paddingRight="17dp"
+    android:paddingLeft="17dp"
+    android:background="@drawable/edit_bg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="@dimen/text12"
+        android:layout_marginBottom="11dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/equipment"
+        tools:text="设备型号：L100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/color999"
+            android:drawablePadding="6dp"
+            android:id="@+id/num_g"
+            tools:text="20ge"
+            android:drawableLeft="@mipmap/agent_g"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:visibility="invisible"
+            android:textSize="@dimen/text12"
+            android:textColor="@color/color999"
+            android:drawablePadding="6dp"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/num_d"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/agent_d"
+            tools:text="20ge "
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="@dimen/text12"
+            android:textColor="@color/color999"
+            android:id="@+id/num"
+            tools:text="一铺货20个"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/section"
+                android:id="@+id/t1"/>
+
+            
+            <FrameLayout
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                
+                <ImageView
+                    android:id="@+id/head"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+
+
+                <FrameLayout
+                    android:background="#33000000"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/photo"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+
+                
+            </FrameLayout>
+          
+            
+            
+
+            <include layout="@layout/section"
+                android:id="@+id/t2"/>
+
+
+            <LinearLayout
+
+                android:layout_marginTop="10dp"
+
+                android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+
+                android:textSize="@dimen/text14"
+                android:textColor="@color/color999"
+                android:paddingLeft="16dp"
+                android:text="商户名称："
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:textColor="@color/color333"
+                tools:text="jdjsdfsfjsdfjsdfj"
+                android:textSize="@dimen/text14"
+                android:id="@+id/name"
+                android:paddingLeft="25dp"
+                android:background="@drawable/edit_bg"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"/>
+
+
+        </LinearLayout>
+
+            <LinearLayout
+
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+
+                    android:textSize="@dimen/text14"
+                    android:textColor="@color/color999"
+                    android:paddingLeft="16dp"
+                    android:text="联系人："
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColor="@color/color333"
+                    tools:text="jdjsdfsfjsdfjsdfj"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/contact"
+                    android:paddingLeft="25dp"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+
+                    android:textSize="@dimen/text14"
+                    android:textColor="@color/color999"
+                    android:paddingLeft="16dp"
+                    android:text="联系电话："
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColor="@color/color333"
+                    tools:text="jdjsdfsfjsdfjsdfj"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/mobile"
+                    android:paddingLeft="25dp"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+
+                    android:textSize="@dimen/text14"
+                    android:textColor="@color/color999"
+                    android:paddingLeft="16dp"
+                    android:text="营业时间："
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColor="@color/color333"
+                    tools:text="jdjsdfsfjsdfjsdfj"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/time"
+                    android:paddingLeft="25dp"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:textSize="@dimen/text14"
+                    android:textColor="@color/color999"
+                    android:paddingLeft="16dp"
+                    android:text="商户地址："
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:textColor="@color/color333"
+                    tools:text="jdjsdfadedeefewfefewfwefewf"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/addr"
+                    android:paddingLeft="25dp"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:fitsSystemWindows="true"
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

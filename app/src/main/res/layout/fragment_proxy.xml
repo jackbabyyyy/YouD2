@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+   <include layout="@layout/bar_search"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:overScrollMode="never"
+
+        android:layout_weight="1"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+    <Button
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/qmui_config_color_white"
+        android:background="@drawable/btn_selector"
+        android:id="@+id/bn_agent_add"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+
+        android:textSize="@dimen/text16"
+
+
+
+        android:text="添加代理"
+        />
+
+
+
+
+
+
+
+
+</LinearLayout>
