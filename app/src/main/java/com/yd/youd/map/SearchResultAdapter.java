@@ -89,8 +89,10 @@ public class SearchResultAdapter extends BaseAdapter {
         TextView textTitle;
         TextView textSubTitle;
         ImageView imageCheck;
+        View root;
 
         public ViewHolder(View view) {
+            root=view.findViewById(R.id.root);
             textTitle = (TextView) view.findViewById(R.id.text_title);
             textSubTitle = (TextView) view.findViewById(R.id.text_title_sub);
             imageCheck = (ImageView) view.findViewById(R.id.image_check);
@@ -105,7 +107,10 @@ public class SearchResultAdapter extends BaseAdapter {
             textTitle.setText(poiItem.getTitle());
             textSubTitle.setText(poiItem.getCityName() + poiItem.getAdName() + poiItem.getSnippet());
 
-            imageCheck.setVisibility(position == selectedPosition ? View.VISIBLE : View.INVISIBLE);
+
+            root.setBackgroundResource(position==selectedPosition?R.drawable.map_check:R.drawable.map_uncheck);
+            imageCheck.setImageResource(position==selectedPosition?R.mipmap.map_check:R.mipmap.map_uncheck);
+            textTitle.setTextColor(position==selectedPosition?context.getResources().getColor(R.color.theme):context.getResources().getColor(R.color.color333));
             textSubTitle.setVisibility((position == 0 && poiItem.getPoiId().equals("regeo")) ? View.GONE : View.VISIBLE);
         }
     }

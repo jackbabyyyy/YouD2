@@ -25,6 +25,7 @@ import com.yd.youd.ui.home.page.BusinessFragment;
 import com.yd.youd.ui.home.page2.ProxyFragment;
 import com.yd.youd.ui.home.page3.DeviceFragment;
 import com.yd.youd.ui.home.page4.OrderFragment;
+import com.yd.youd.ui.home.page5.ProfitDetailFragment;
 import com.yd.youd.ui.home.page5.ProfitFragment;
 import com.yd.youd.ui.home.page6.CashFragment;
 import com.yd.youd.ui.home.page6.CashGetFragment;
@@ -140,7 +141,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                     startFragment(new OrderFragment());
                     break;
                 case 4:
-                    startFragment(new ProfitFragment());
+                    startFragment(new ProfitDetailFragment());
                     break;
                 case 5:
                     startFragment(new CashFragment());

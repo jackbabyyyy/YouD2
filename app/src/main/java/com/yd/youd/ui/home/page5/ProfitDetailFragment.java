@@ -10,9 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.yd.youd.R;
 import com.yd.youd.base.BaseFragment;
+import com.yd.youd.model.ProfitListBean;
+import com.yd.youd.net.AppUrl;
+import com.yd.youd.net.HttpUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import okhttp3.Request;
 
 /**
  * Created by PP on 2019/4/2.
@@ -49,7 +55,7 @@ public class ProfitDetailFragment extends BaseFragment {
     RecyclerView mRecycler;
 
 
-    private List<ProfitDetailItem> mProfitDetailItems=new ArrayList<>();
+    private List<ProfitListBean.DataBeanX.DataBean> mProfitDetailItems=new ArrayList<>();
     private ProfitDetailAdapter mAdapter;
 
     @Override
@@ -60,27 +66,31 @@ public class ProfitDetailFragment extends BaseFragment {
     @Override
     protected void init() {
 
-        getData();
+
         mAdapter = new ProfitDetailAdapter(mProfitDetailItems);
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecycler.setAdapter(mAdapter);
 
-
+        getData();
 
     }
 
     private void getData() {
-        //TODO 真实数据
-        ProfitDetailItem item=new ProfitDetailItem();
-        item.business="ksfsf";
-        item.code="7324823234";
-        item.profit="+4.2yuan";
-        item.reback="2012";
-        item.time="2013";
-        item.type="mc800";
-        for (int i=0;i<10;i++){
-            mProfitDetailItems.add(item);
-        }
+        HttpUtil.getInstance(getActivity())
+                .postForm(AppUrl.profitList, null, new HttpUtil.ResultCallback() {
+                    @Override
+                    public void onError(Request request, Exception e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String s) throws IOException {
+
+                        ProfitListBean bean= JSON.parseObject(s,ProfitListBean.class);
+                        mAdapter.setNewData(bean.data.data);
+                    }
+                });
+
     }
 
 

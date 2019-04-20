@@ -68,7 +68,9 @@ public class OrderItemFragment extends BaseFragment implements BaseQuickAdapter.
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startFragment(new OrderDetailFragment());
+                String id=mAdapter.getData().get(position).id;
+                String no=mAdapter.getData().get(position).order_no;
+                startFragment( OrderDetailFragment.getInstance(id,no));
             }
         });
 

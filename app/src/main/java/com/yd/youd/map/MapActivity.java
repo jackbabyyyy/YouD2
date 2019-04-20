@@ -46,17 +46,21 @@ import com.amap.api.services.help.InputtipsQuery;
 import com.amap.api.services.help.Tip;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
+import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.yd.youd.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 public class MapActivity extends AppCompatActivity implements LocationSource,
         AMapLocationListener, GeocodeSearch.OnGeocodeSearchListener, PoiSearch.OnPoiSearchListener { // Inputtips.InputtipsListener
 
 
     private ListView listView;
-    private SegmentedGroup mSegmentedGroup;
+//    private SegmentedGroup mSegmentedGroup;
     private AutoCompleteTextView searchText;
     private AMap aMap;
     private MapView mapView;
@@ -64,7 +68,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
 
-    private String[] items = {"住宅区", "学校", "楼宇", "商场" };
+//    private String[] items = {"住宅区", "学校", "楼宇", "商场" };
 
     private Marker locationMarker;
 
@@ -76,7 +80,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     private PoiSearch poiSearch;
     private List<PoiItem> poiItems;// poi数据
 
-    private String searchType = items[0];
+//    private String searchType = items[0];
     private String searchKey = "";
     private LatLonPoint searchLatlonPoint;
 
@@ -91,14 +95,20 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     private boolean isfirstinput = true;
     private PoiItem firstItem;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_map);
+        //
+        QMUIStatusBarHelper.setStatusBarLightMode(this);
 
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
+
         init();
 
         initView();
@@ -108,6 +118,20 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     }
 
     private void initView() {
+        QMUITopBarLayout mBar=findViewById(R.id.bar);
+        mBar.setTitle("位置");
+        mBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        mBar.addRightTextButton("确定",R.id.topbar_right).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         listView = (ListView) findViewById(R.id.listview);
         searchResultAdapter = new SearchResultAdapter(MapActivity.this);
@@ -115,28 +139,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
 
         listView.setOnItemClickListener(onItemClickListener);
 
-        mSegmentedGroup = (SegmentedGroup) findViewById(R.id.segmented_group);
-        mSegmentedGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                searchType = items[0];
-                switch (checkedId) {
-                    case R.id.radio0 :
-                        searchType = items[0];
-                        break;
-                    case R.id.radio1 :
-                        searchType = items[1];
-                        break;
-                    case R.id.radio2 :
-                        searchType = items[2];
-                        break;
-                    case R.id.radio3 :
-                        searchType = items[3];
-                        break;
-                }
-                geoAddress();
-            }
-        });
+
 
         searchText = (AutoCompleteTextView) findViewById(R.id.keyWord);
         searchText.addTextChangedListener(new TextWatcher() {
@@ -355,7 +358,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     protected void doSearchQuery() {
 //        Log.i("MY", "doSearchQuery");
         currentPage = 0;
-        query = new PoiSearch.Query(searchKey, searchType, "");// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
+        query = new PoiSearch.Query(searchKey, "", "");// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
         query.setCityLimit(true);
         query.setPageSize(20);
         query.setPageNum(currentPage);
@@ -438,6 +441,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
                 PoiItem poiItem = (PoiItem) searchResultAdapter.getItem(position);
                 LatLng curLatlng = new LatLng(poiItem.getLatLonPoint().getLatitude(), poiItem.getLatLonPoint().getLongitude());
 
+                Log.d("map", "onItemClick: "+curLatlng.latitude+"//"+curLatlng.longitude+"//"+poiItem.getTitle());
                 isItemClickAction = true;
 
                 aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curLatlng, 16f));

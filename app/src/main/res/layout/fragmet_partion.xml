@@ -102,13 +102,13 @@
                 android:layout_height="35dp"/>
 
             <TextView
-                android:text="注：例如自己分润为80%,设置下级分润可输入80%一下的数值！"
-                android:textColor="@color/color999"
-                android:textSize="@dimen/text12"
                 android:id="@+id/des"
-                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="注：例如自己分润为80%,设置下级分润可输入80%以下的数值！"
+                android:textColor="@color/color999"
+                android:textSize="@dimen/text12"/>
         </LinearLayout>
 
     </LinearLayout>

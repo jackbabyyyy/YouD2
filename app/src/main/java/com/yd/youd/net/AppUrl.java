@@ -1,5 +1,7 @@
 package com.yd.youd.net;
 
+import android.content.pm.ResolveInfo;
+
 /**
  * Created by PP on 2019/3/8.
  */
@@ -48,6 +50,7 @@ public class AppUrl {
     public static final String cashList=base+"api/5cb59e1e51bc6";
     public static final String homeData=base+"api/5cb1ac11a7044";
     public static final String getBusinessDetail=base+"api/5cb18984ede64";
+    public static final String profitList=base+"api/5cb9782cdef69";
 
 
 

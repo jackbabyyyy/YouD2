@@ -18,7 +18,9 @@ import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.walkermanx.photopicker.PhotoPicker;
 import com.yd.youd.R;
 import com.yd.youd.base.BaseFragment;
+import com.yd.youd.map.MapActivity;
 import com.yd.youd.model.BaseJson;
+import com.yd.youd.model.BusinessDetailBean;
 import com.yd.youd.model.ImgBean;
 import com.yd.youd.net.AppUrl;
 import com.yd.youd.net.HttpUtil;
@@ -26,6 +28,7 @@ import com.yd.youd.net.HttpUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,6 +62,12 @@ public class BusinessChangeFragment extends BaseFragment {
     ImageView mHead;
     @BindView(R.id.photo)
     ImageView mPhoto;
+    @BindView(R.id.addr_detail)
+    EditText mAddrDetail;
+    @BindView(R.id.rate_line)
+    EditText mRateLine;
+    @BindView(R.id.rate_package)
+    EditText mRatePackage;
     private String mHeadUrl="";
 
     @Override
@@ -88,6 +97,31 @@ public class BusinessChangeFragment extends BaseFragment {
         ((TextView) t1.findViewById(R.id.section_name)).setText("商户图片");
         ((TextView) t2.findViewById(R.id.section_name)).setText("商户基础信息");
 
+
+        initDataView();
+
+
+    }
+
+    public static BusinessChangeFragment getInstance(String infoJson){
+        Bundle bundle=new Bundle();
+        bundle.putString("info",infoJson);
+        BusinessChangeFragment fragment=new BusinessChangeFragment();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    private void initDataView() {
+        String info=getArguments().getString("info");
+        BusinessDetailBean bean = JSON.parseObject(info, BusinessDetailBean.class);
+        mName.setText(bean.data.seller.name);
+        mContact.setText(bean.data.seller.contacts);
+        mMobile.setText(bean.data.seller.mobile);
+        mTime.setText(bean.data.seller.shopstart+"-"+bean.data.seller.shopend);
+        mAddr.setText(bean.data.seller.addr);
+        mAddrDetail.setText(bean.data.seller.addr);
+        mRateLine.setText(bean.data.seller.line_rate);
+        mRatePackage.setText(bean.data.seller.cabinet_rate);
 
 
     }
@@ -138,14 +172,30 @@ public class BusinessChangeFragment extends BaseFragment {
                 });
     }
 
-    @OnClick(R.id.photo)
-    public void onClick(){
-        PhotoPicker.builder()
-                .setPhotoCount(1)
-                .setPreviewEnabled(false)
-                .setCrop(true)
-                .setCropXY(1, 1)
-                .start(getActivity(), this);
+    @OnClick({R.id.photo,R.id.iv_time,R.id.iv_addr})
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.photo:
+                PhotoPicker.builder()
+                        .setPhotoCount(1)
+                        .setPreviewEnabled(false)
+                        .setCrop(true)
+                        .setCropXY(1, 1)
+                        .start(getActivity(), this);
+                break;
+
+            case R.id.iv_time:
+
+                break;
+
+
+            case R.id.iv_addr:
+                startActivity(new Intent(getActivity(), MapActivity.class));
+                break;
+
+        }
+
+
     }
 
     @Override

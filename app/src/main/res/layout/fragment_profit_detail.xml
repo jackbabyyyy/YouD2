@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <include layout="@layout/bar_search"/>
@@ -14,6 +15,7 @@
 
 
      <android.support.constraint.ConstraintLayout
+         android:visibility="gone"
          android:background="@mipmap/profit_detail"
          android:layout_marginBottom="24dp"
          android:layout_width="match_parent"
@@ -99,7 +101,8 @@
 
 
 
-    <include layout="@layout/divier_title"/>
+    <include layout="@layout/divier_title"
+        android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"

@@ -87,6 +87,7 @@ public class BusinessDetailFragment extends BaseFragment {
 
 
     private String mSid;
+    private String mInfoJson;
 
 
     public static BusinessDetailFragment getInstance(String sid) {
@@ -144,6 +145,7 @@ public class BusinessDetailFragment extends BaseFragment {
 
             @Override
             public void onResponse(String s) throws IOException {
+                mInfoJson = s;
                 BusinessDetailBean bean = JSON.parseObject(s, BusinessDetailBean.class);
                 //
                 Glide.with(getActivity()).load(bean.data.seller.picture).into(mHead);
@@ -168,7 +170,7 @@ public class BusinessDetailFragment extends BaseFragment {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.change:
-                startFragment(new BusinessChangeFragment());
+                startFragment( BusinessChangeFragment.getInstance(mInfoJson));
                 break;
             case R.id.change2:
 

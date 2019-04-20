@@ -86,4 +86,30 @@ public class StatusUtil {
 
         return string;
     }
+
+    public static String getPayType(String type){
+        String string=null;
+        switch (type){
+            case "0":
+                string="余额";
+                break;
+            case "1":
+                string="微信";
+                break;
+            case "2":
+                string="支付宝";
+                break;
+            case "3":
+                string="app";
+                break;
+            case "4":
+                string="wap";
+                break;
+
+
+        }
+
+        return string;
+    }
+
 }
