@@ -14,7 +14,7 @@
 
     </com.qmuiteam.qmui.widget.QMUITopBarLayout>
     
-    <com.yd.youd.custom.SegmentControlView
+    <com.ud.share.custom.SegmentControlView
         android:id="@+id/segment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:layout_marginTop="6dp"
+        android:fitsSystemWindows="true"
+        android:id="@+id/btn"
+        android:layout_marginRight="26dp"
+        android:layout_marginLeft="26dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="确定分配"
+        android:layout_marginBottom="6dp"
+        android:layout_gravity="bottom"
+        android:background="@mipmap/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</android.support.constraint.ConstraintLayout>

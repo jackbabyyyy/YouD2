@@ -18,6 +18,21 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <Button
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/qmui_config_color_white"
+        android:background="@drawable/btn_selector"
+        android:id="@+id/bn_business_add"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/text16"
+        android:text="添加商户"
+        />
+
 
 
 

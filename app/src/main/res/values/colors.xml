@@ -23,5 +23,9 @@
 
     <color name="test">#FF2CA99F</color>
 
+    <color name="theme2">#5db479</color>
+
+    <color name="black">#333333</color>
+
 
 </resources>

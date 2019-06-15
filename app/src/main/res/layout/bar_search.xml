@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:singleLine="true"
         android:paddingLeft="16dp"
         android:background="@drawable/edit_bg"
         android:layout_marginLeft="24dp"

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="120dp"
+        android:id="@+id/des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <com.tuo.customview.VerificationCodeView
+        android:layout_marginTop="24dp"
+        android:id="@+id/icv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        app:icv_et_bg_focus="@drawable/shape_icv_et_bg_focus"
+        app:icv_et_bg_normal="@drawable/shape_icv_et_bg_normal"
+        app:icv_et_divider_drawable="@drawable/shape_divider_identifying"
+        app:icv_et_number="6"
+        app:icv_et_pwd="false"
+        app:icv_et_pwd_radius="10dp"
+        app:icv_et_text_color="#000000"
+
+        app:icv_et_width="50dp" />
+
+</LinearLayout>

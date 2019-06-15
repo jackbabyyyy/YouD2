@@ -15,5 +15,6 @@
         <attr name="scv_SegmentPaddingHorizontal" format="reference|dimension" />
         <attr name="scv_SegmentPaddingVertical" format="reference|dimension" />
         <attr name="scv_Gradient" format="reference|boolean" />
+
     </declare-styleable>
 </resources>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rg_tab"
+            >
+
+    <com.qmuiteam.qmui.widget.QMUIViewPager
+        android:fitsSystemWindows="true"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"/>
+        </FrameLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/rg_tab"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/white"
+            android:gravity="center"
+
+            android:orientation="horizontal"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:weightSum="5">
+
+
+            <LinearLayout
+                android:id="@+id/main_rb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@mipmap/tab1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="首页"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/message_rb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@mipmap/tab2_"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:text="统计"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+            <!--</LinearLayout>-->
+            <!--给中间凸起按钮预留位置-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/friend_rb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@mipmap/tab3_"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:text="商城采购"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/info_rb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@mipmap/tab4_"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:text="个人"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <RelativeLayout
+
+            android:id="@+id/send_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_above="@+id/rg_tab"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:clickable="true"
+            >
+
+            <ImageView
+                android:id="@+id/send_igv"
+                android:layout_width="38dp"
+                android:layout_height="47dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/tab_mid" />
+
+            <TextView
+                android:textColor="@color/black"
+
+                android:id="@+id/send_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="铺设"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

@@ -27,6 +27,7 @@
 
         <TextView
 
+            android:id="@+id/time"
             android:layout_marginLeft="50dp"
             android:textColor="@color/color333"
             tools:text="3小时"
@@ -49,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
+            android:inputType="numberDecimal"
+            android:id="@+id/value"
             android:hint="输入总价格"
             android:background="@drawable/radius_bg"
 

@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"/>
     
     <TextView
+        android:id="@+id/canChoose"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_marginLeft="10dp"

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:layout_margin="16dp"
+       android:background="@drawable/home_mid_bg"
+       android:id="@+id/search"
+       android:layout_width="match_parent"
+       android:layout_height="48dp">
+
+       <TextView
+           android:textSize="@dimen/text18"
+           android:textColor="@color/white"
+           android:layout_centerInParent="true"
+           android:text="批量搜索  设备SN码"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+       <ImageView
+           android:layout_marginRight="16dp"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:src="@mipmap/right"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+
+   </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+
+        android:fitsSystemWindows="true"
+        android:id="@+id/btn"
+        android:layout_marginRight="26dp"
+        android:layout_marginLeft="26dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="确定分配"
+        android:layout_marginBottom="6dp"
+        android:layout_gravity="bottom"
+        android:background="@mipmap/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -33,6 +33,7 @@
                 android:layout_marginTop="25dp">
 
                 <ImageView
+                    android:scaleType="fitXY"
                     android:id="@+id/head"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -45,6 +46,7 @@
                     android:background="#33000000">
 
                     <ImageView
+
                         android:id="@+id/photo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -299,6 +301,7 @@
                     android:orientation="vertical">
 
                     <EditText
+
                         android:inputType="numberDecimal"
                         android:id="@+id/rate_line"
                         android:layout_width="match_parent"

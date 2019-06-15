@@ -20,6 +20,7 @@
             android:background="@drawable/tab_panel_bg"/>
         
         <TextView
+            android:visibility="gone"
             android:gravity="center_vertical"
             android:textSize="@dimen/text13"
             android:textColor="@color/color333"

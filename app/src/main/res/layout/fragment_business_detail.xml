@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
    <ScrollView
+       android:layout_marginTop="?attr/qmui_topbar_height"
        android:scrollbars="none"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
@@ -18,6 +19,8 @@
            android:layout_height="match_parent">
 
            <ImageView
+
+               android:scaleType="fitXY"
                android:id="@+id/head"
                android:layout_marginBottom="25dp"
                android:layout_marginTop="25dp"
@@ -343,6 +346,16 @@
 
            <include layout="@layout/divier_title"
                android:id="@+id/t4"/>
+
+           <android.support.v7.widget.RecyclerView
+               android:layout_marginRight="15dp"
+               android:layout_marginLeft="15dp"
+               android:background="@drawable/edit_bg2"
+               android:layout_marginBottom="20dp"
+               android:id="@+id/recycler"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+           </android.support.v7.widget.RecyclerView>
 
 
 

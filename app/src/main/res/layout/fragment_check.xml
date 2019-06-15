@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout
+<LinearLayout
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
 
     <cn.bingoogolapple.qrcode.zxing.ZXingView
+
         android:id="@+id/zxingview"
-     android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:qrcv_animTime="1000"
         app:qrcv_barCodeTipText="将条码放入框内，即可自动扫描"
         app:qrcv_barcodeRectHeight="120dp"
-        app:qrcv_borderColor="@android:color/white"
+        app:qrcv_borderColor="@android:color/transparent"
         app:qrcv_borderSize="1dp"
-        app:qrcv_cornerColor="@color/colorPrimaryDark"
+        app:qrcv_cornerColor="@color/white"
         app:qrcv_cornerDisplayType="center"
         app:qrcv_cornerLength="20dp"
         app:qrcv_cornerSize="3dp"
@@ -44,4 +53,4 @@
         app:qrcv_verticalBias="-1" />
 
 
-</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
+</LinearLayout>
