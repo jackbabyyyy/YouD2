@@ -63,15 +63,12 @@ public class LoginSmsFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.tv_sms:
                 getSms();
-
                 break;
             case R.id.btn_login:
                 getLogin();
-
-
                 break;
             case R.id.tv_pass:
-                startFragment(new LoginPsdFragment());
+               popBackStack();
                 break;
         }
     }

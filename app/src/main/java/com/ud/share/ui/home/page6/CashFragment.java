@@ -40,6 +40,7 @@ public class CashFragment extends BaseFragment {
     @Override
     protected void init() {
         initMultiFragment();
+        mTotal.setVisibility(View.GONE);
         mBar.setTitle("提现记录");
         mBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
             @Override

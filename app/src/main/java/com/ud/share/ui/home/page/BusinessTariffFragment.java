@@ -16,10 +16,13 @@ import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
+import com.ud.share.event.FreshBusinessEvent;
 import com.ud.share.model.BaseJson;
 import com.ud.share.model.BusinessDetailBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -131,6 +134,7 @@ public class BusinessTariffFragment extends BaseFragment {
 
                             @Override
                             public void onResponse(String s) throws IOException {
+                                EventBus.getDefault().post(new FreshBusinessEvent());
                                 BaseJson json=JSON.parseObject(s,BaseJson.class);
                                 showToast(json.msg);
                                 popBackStack();

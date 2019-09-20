@@ -24,10 +24,15 @@ import com.chad.library.adapter.base.loadmore.LoadMoreView;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
+import com.ud.share.event.FreshProxyEvent;
 import com.ud.share.model.ProxyIncomeBean;
 import com.ud.share.model.ProxyListBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -80,6 +85,8 @@ public class ProxyFragment extends BaseFragment implements BaseQuickAdapter.Requ
         //
         mSearch.setHint("请输入代理商名称或者手机号码");
 
+        EventBus.getDefault().register(this);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new ProxyAdapter(mDatas);
         mAdapter.addHeaderView(head);
@@ -117,7 +124,7 @@ public class ProxyFragment extends BaseFragment implements BaseQuickAdapter.Requ
 
 
         getProxyIncome();
-
+        getProxyList();
         mWatcher = new MyTextWatcher();
     }
 
@@ -148,11 +155,7 @@ public class ProxyFragment extends BaseFragment implements BaseQuickAdapter.Requ
     @Override
     public void onResume() {
         super.onResume();
-        //刷新
-        mPage = 1;
-        mAdapter.getData().clear();
-        mAdapter.notifyDataSetChanged();
-        getProxyList();
+
         //
         mSearch.addTextChangedListener(mWatcher);
 
@@ -175,7 +178,7 @@ public class ProxyFragment extends BaseFragment implements BaseQuickAdapter.Requ
                     @Override
                     public void onResponse(String response) throws IOException {
                         ProxyIncomeBean bean = JSON.parseObject(response, ProxyIncomeBean.class);
-                        mMAgentNum.setText(bean.data.sum_agents+"家");
+                        mMAgentNum.setText("代理商总数："+bean.data.sum_agents+"家");
                         mMAgentSum.setText(bean.data.total_rent);
 
                     }
@@ -289,7 +292,7 @@ public class ProxyFragment extends BaseFragment implements BaseQuickAdapter.Requ
                 getProxyList();
                 break;
             case R.id.bn_agent_add:
-                startFragment(new ProxyAddFragment());
+                startFragment(new ProxyAddFragment2());
                 break;
         }
     }
@@ -298,4 +301,18 @@ public class ProxyFragment extends BaseFragment implements BaseQuickAdapter.Requ
     public void onClick(View v) {
 
     }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(FreshProxyEvent event) {
+        //刷新
+        mPage = 1;
+        mAdapter.getData().clear();
+        mAdapter.notifyDataSetChanged();
+        getProxyList();
+
+    }
+
+
+
 }

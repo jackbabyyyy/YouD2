@@ -10,6 +10,8 @@ import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
 
+import org.w3c.dom.Text;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -26,6 +28,15 @@ public class CashGetStatusFragment extends BaseFragment {
     @BindView(R.id.back)
     Button mBack;
 
+    @BindView(R.id.tv1)
+    TextView mTv1;
+    @BindView(R.id.tv2)
+    TextView mTv2;
+    @BindView(R.id.tv3)
+    TextView mTv3;
+    @BindView(R.id.tv4)
+    TextView mTv4;
+
 
     @Override
     protected int getLayoutId() {
@@ -35,6 +46,15 @@ public class CashGetStatusFragment extends BaseFragment {
     @Override
     protected void init() {
         boolean success=getArguments().getBoolean("success");
+        String tixian=getArguments().getString("tixian");
+        String shiji=getArguments().getString("shiji");
+        String ketixian=getArguments().getString("ketixian");
+
+
+        mTv1.setText("提现金额        "+tixian+"元");
+        mTv2.setText("实际到账        "+shiji+"元");
+        mTv3.setText("提现渠道        "+"微信");
+        mTv4.setText("可提现金额      "+ketixian+"元");
         mBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,18 +71,24 @@ public class CashGetStatusFragment extends BaseFragment {
         }else{
             mBar.setTitle("申请成功");
             mTv.setText("申请成功！");
-            mTv.setTextColor(getResources().getColor(R.color.theme));
+
             mIv.setImageResource(R.mipmap.cash_ok);
-            mBack.setBackgroundResource(R.mipmap.btn_cash_ok);
+
         }
+
+
+
 
 
     }
 
-    public static CashGetStatusFragment getInstance(boolean success){
+    public static CashGetStatusFragment getInstance(boolean success,String tixian,String shiji,String ketixian){
         CashGetStatusFragment fragment=new CashGetStatusFragment();
         Bundle bundle=new Bundle();
         bundle.putBoolean("success",success);
+        bundle.putString("tixian",tixian);
+        bundle.putString("shiji",shiji);
+        bundle.putString("ketixian",ketixian);
         fragment.setArguments(bundle);
         return fragment;
 

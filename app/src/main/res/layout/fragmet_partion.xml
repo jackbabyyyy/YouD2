@@ -19,6 +19,7 @@
 
     <LinearLayout
 
+        android:visibility="gone"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +48,7 @@
 
             <EditText
                 android:hint="设置下级代理的分润比例"
-                android:id="@+id/line"
+                android:id="@+id/cabinet"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:background="@drawable/edit_bg"
@@ -62,7 +63,7 @@
     </LinearLayout>
 
     <LinearLayout
-
+        android:layout_marginTop="25dp"
 
         android:layout_weight="1"
         android:orientation="horizontal"
@@ -78,7 +79,7 @@
             android:textSize="@dimen/text14"
             android:textColor="@color/color999"
             android:paddingLeft="16dp"
-            android:text="设置柜分润："
+            android:text="设置线分润："
             android:layout_width="125dp"
             android:layout_height="wrap_content"/>
 
@@ -95,7 +96,7 @@
                 android:textColor="@color/color333"
                 android:textColorHint="@color/color999"
                 android:textSize="@dimen/text14"
-                android:id="@+id/cabinet"
+                android:id="@+id/line"
                 android:paddingLeft="25dp"
                 android:background="@drawable/edit_bg"
                 android:layout_width="match_parent"

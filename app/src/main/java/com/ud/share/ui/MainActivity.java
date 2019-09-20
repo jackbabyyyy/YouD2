@@ -1,11 +1,14 @@
 package com.ud.share.ui;
 
+import android.arch.lifecycle.ViewModel;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
 import com.ud.share.base.BaseFragmentActivity;
+import com.ud.share.model.BaseJson;
 import com.ud.share.model.InfoBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
@@ -36,6 +39,10 @@ public class MainActivity extends BaseFragmentActivity {
         //初始化配置
         getH5Set();
         getInfo();
+
+
+
+
     }
 
     private void getH5Set(){
@@ -47,8 +54,6 @@ public class MainActivity extends BaseFragmentActivity {
 
             @Override
             public void onResponse(String response) throws IOException {
-
-
                 AppData.h5=response;
 
             }

@@ -4,10 +4,10 @@
           android:id="@+id/online_user_list_item_textview"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="20dip"
-          android:layout_marginTop="20dip"
+          android:paddingTop="10dp"
+          android:paddingLeft="10dp"
+          android:paddingBottom="10dp"
           tools:text="sjfsf"
           android:textColor="#898989"
-          android:textSize="15sp">
-
+          android:textSize="22sp">
 </TextView>

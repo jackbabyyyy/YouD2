@@ -94,15 +94,13 @@ public class OrderFragment extends BaseFragment {
 
         mContentViewPager.setAdapter(mFragmentPagerAdapter);
         mContentViewPager.setCurrentItem(index);
-        mTabSegment.setMode(QMUITabSegment.MODE_SCROLLABLE);
+        mTabSegment.setMode(QMUITabSegment.MODE_FIXED);
 
         mTabSegment.addTab(new QMUITabSegment.Tab(""));
         mTabSegment.addTab(new QMUITabSegment.Tab(""));
         mTabSegment.addTab(new QMUITabSegment.Tab(""));
         mTabSegment.addTab(new QMUITabSegment.Tab(""));
         mTabSegment.addTab(new QMUITabSegment.Tab(""));
-
-
 
 
         int space = QMUIDisplayHelper.dp2px(getContext(), 16);
@@ -158,6 +156,8 @@ public class OrderFragment extends BaseFragment {
                 mTabSegment.addTab(new QMUITabSegment.Tab("已完成("+bean.data.order_num_1.get(2)+")"));
                 mTabSegment.addTab(new QMUITabSegment.Tab("超时("+bean.data.order_num_1.get(3)+")"));
                 mTabSegment.addTab(new QMUITabSegment.Tab("异常("+bean.data.order_num_1.get(4)+")"));
+                mTvTotal.setText("收益总额："+bean.data.total+"元");
+                mTvTotal.setVisibility(View.VISIBLE);
                 mTabSegment.notifyDataChanged();
                 }
 

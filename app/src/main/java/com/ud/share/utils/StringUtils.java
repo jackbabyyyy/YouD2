@@ -2,6 +2,10 @@ package com.ud.share.utils;
 
 import android.text.TextUtils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by PP on 2019/4/26.
  */
@@ -37,6 +41,9 @@ public class StringUtils {
     }
 
     public static String getPhoneX(String mobile){
+        if (mobile.length()!=11){
+            return mobile;
+        }
 
         return  mobile.substring(0,3)+"****"+mobile.substring(7,mobile.length());
 
@@ -53,6 +60,33 @@ public class StringUtils {
         }
         return s;
     }
+
+
+
+    public static Long date2TimeStamp(String date) {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return sdf.parse(date).getTime() / 1000;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return 0l;
+
+    }
+
+    public static String timeStamp2Date(long time) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String s=sdf.format(new Date(time*1000));
+        int length=s.length();
+        return s.substring(5,length);
+
+    }
+
+
+
 
 
 

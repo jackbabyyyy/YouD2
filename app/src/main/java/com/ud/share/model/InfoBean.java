@@ -27,8 +27,8 @@ public class InfoBean {
          * credit_num :
          * bank_name :
          * belong_bank :
-         * isset_pwd : 0
-         */
+                * isset_pwd : 0
+                */
 
         public String realname;
         public String nickname;

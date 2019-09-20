@@ -46,11 +46,19 @@ public class ExtendFragment extends BaseFragment {
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            int space= QMUIDisplayHelper.dp2px(getActivity(),12);
             @Override
             public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-               if (parent.getChildAdapterPosition(view)<2){
-                   outRect.top= QMUIDisplayHelper.dp2px(getActivity(),30);
+               int pos=parent.getChildAdapterPosition(view);
+               if (pos%2==0){
+                   outRect.left=space;
+                   outRect.right=space/2;
+               }else {
+                   outRect.left=space/2;
+                   outRect.right=space;
                }
+
+               outRect.top= space;
             }
         });
 

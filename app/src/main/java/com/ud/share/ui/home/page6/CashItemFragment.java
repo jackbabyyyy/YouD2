@@ -45,6 +45,7 @@ public class CashItemFragment extends BaseFragment implements BaseQuickAdapter.R
 
     public boolean isFisrtSetTotal=true;
     private String mType;
+    private TextView mTvNum;
 
     @Override
     protected int getLayoutId() {
@@ -62,17 +63,19 @@ public class CashItemFragment extends BaseFragment implements BaseQuickAdapter.R
 
 
         View v=LayoutInflater.from(getActivity()).inflate(R.layout.head_cash_get,null);
+        mTvNum = v.findViewById(R.id.totalnum);
         mTotal = v.findViewById(R.id.total);
-      //  mAdapter.addHeaderView(v);
+        mAdapter.addHeaderView(v);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnLoadMoreListener(this,mRecyclerView);
         mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
-                outRect.bottom=QMUIDisplayHelper.dp2px(getActivity(),20);
-                if (parent.getChildAdapterPosition(view)==0){
-                    outRect.top= QMUIDisplayHelper.dp2px(getActivity(),20);
+
+                if (parent.getChildAdapterPosition(view)==1){
+                }else if (parent.getChildAdapterPosition(view)>=1){
+                    outRect.bottom=QMUIDisplayHelper.dp2px(getActivity(),20);
                 }
             }
         });
@@ -108,7 +111,9 @@ public class CashItemFragment extends BaseFragment implements BaseQuickAdapter.R
 
                 if (isFisrtSetTotal){
                     mTotal.setVisibility(View.VISIBLE);
-                    mTotal.setText(mType+"金额："+mBean.data.total_amount+"元");
+                    mTvNum.setVisibility(View.VISIBLE);
+                    mTvNum.setText("共计数据："+mBean.data.total+"条");
+                    mTotal.setText("共计金额："+mBean.data.total_amount+"元");
                     isFisrtSetTotal=false;
                 }
 

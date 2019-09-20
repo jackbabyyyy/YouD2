@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -16,26 +17,26 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
  */
 public class MyApplication extends Application {
 
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        QMUISwipeBackActivityManager.init(this);
+         QMUISwipeBackActivityManager.init(this);
 
+         regToWx();
 
-
-        regToWx();
-
+         CrashReport.initCrashReport(getApplicationContext(), "d45ecdd04c", false);
 
 
     }
 
-    private void  regToWx() {
+    private void regToWx() {
         // 通过WXAPIFactory工厂，获取IWXAPI的实例
-        IWXAPI  api = WXAPIFactory.createWXAPI(this, BuildConfig.WX_ID, true);
+        IWXAPI api = WXAPIFactory.createWXAPI(this, BuildConfig.WX_ID, true);
 
         // 将应用的appId注册到微信
-        api.registerApp( BuildConfig.WX_ID);
+        api.registerApp(BuildConfig.WX_ID);
 
         //建议动态监听微信启动广播进行注册到微信
         registerReceiver(new BroadcastReceiver() {

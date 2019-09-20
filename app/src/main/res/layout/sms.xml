@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+
+
+    <TextView
+        android:textSize="17sp"
+        android:layout_marginTop="20dp"
+        android:text="请输入验证码"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.tuo.customview.VerificationCodeView
+        android:layout_marginTop="24dp"
+        android:id="@+id/icv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:icv_et_bg_focus="@drawable/sms2"
+        app:icv_et_bg_normal="@drawable/sms"
+        app:icv_et_divider_drawable="@drawable/shape_divider_identifying"
+        app:icv_et_number="6"
+        app:icv_et_pwd="false"
+        app:icv_et_pwd_radius="10dp"
+        app:icv_et_text_color="#000000"
+        app:icv_et_width="50dp" />
+
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:fitsSystemWindows="true"
+        android:id="@+id/btn"
+        android:layout_marginRight="26dp"
+        android:layout_marginLeft="26dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="下一步"
+        android:layout_marginBottom="18dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/radius_bg_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"/>
+
+</LinearLayout>

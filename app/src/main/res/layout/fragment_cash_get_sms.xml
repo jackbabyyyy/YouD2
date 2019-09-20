@@ -15,15 +15,29 @@
     </com.qmuiteam.qmui.widget.QMUITopBarLayout>
 
 
+    <ImageView
+        android:layout_marginTop="48dp"
+        android:src="@mipmap/icon"
+        android:layout_gravity="center"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
     <TextView
-        android:gravity="center"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="120dp"
-        android:id="@+id/des"
+        android:textSize="17sp"
+        android:layout_marginTop="20dp"
+        android:text="幽电科技  正在向你发起提现"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+
+        android:id="@+id/des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <com.tuo.customview.VerificationCodeView
         android:layout_marginTop="24dp"
@@ -34,14 +48,38 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
 
-        app:icv_et_bg_focus="@drawable/shape_icv_et_bg_focus"
-        app:icv_et_bg_normal="@drawable/shape_icv_et_bg_normal"
+        app:icv_et_bg_focus="@drawable/sms2"
+        app:icv_et_bg_normal="@drawable/sms"
         app:icv_et_divider_drawable="@drawable/shape_divider_identifying"
         app:icv_et_number="6"
         app:icv_et_pwd="false"
         app:icv_et_pwd_radius="10dp"
         app:icv_et_text_color="#000000"
-
         app:icv_et_width="50dp" />
+
+    <TextView
+        android:gravity="center"
+        android:background="#F5F5F5"
+        android:textColor="@color/theme"
+        android:id="@+id/sms"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_width="85dp"
+        android:layout_height="28dp"/>
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:fitsSystemWindows="true"
+        android:id="@+id/btn"
+        android:layout_marginRight="26dp"
+        android:layout_marginLeft="26dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="确定"
+        android:layout_marginBottom="18dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/radius_bg_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"/>
 
 </LinearLayout>

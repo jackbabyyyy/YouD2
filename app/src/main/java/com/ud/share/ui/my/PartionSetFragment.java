@@ -58,7 +58,7 @@ public class PartionSetFragment extends BaseFragment {
         String cabinet=mCabinet.getText().toString().trim();
         HashMap<String,String> map=new HashMap<>();
         map.put("sub_line_rate",line);
-        map.put("sub_cabinet_rate",cabinet);
+        map.put("sub_cabinet_rate","0");
         HttpUtil.getInstance(getActivity()).postForm(AppUrl.partionSet, map, new HttpUtil.ResultCallback() {
             @Override
             public void onError(Request request, Exception e) {

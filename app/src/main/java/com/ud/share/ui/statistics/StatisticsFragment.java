@@ -4,28 +4,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.QMUITabSegment;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
-import com.ud.share.model.DeviceTypeBean;
-import com.ud.share.net.AppUrl;
-import com.ud.share.net.HttpUtil;
-import com.ud.share.ui.install.ChooseDeviceFragment;
-import com.ud.share.ui.install.ChooseDeviceItemFragment2;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Request;
 
 /**
  * Created by PP on 2019/5/28.
@@ -65,10 +53,7 @@ public class StatisticsFragment extends BaseFragment {
 
 
         mBaseFragments.add(new StaItemFragment());
-        mBaseFragments.add(new StaItemFragment());
-
-
-
+        mBaseFragments.add(new StaItem2Fragment());
 
 
         mPagerAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {

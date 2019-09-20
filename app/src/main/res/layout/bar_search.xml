@@ -8,6 +8,7 @@
     android:layout_height="60dp">
 
     <ImageView
+        android:padding="10dp"
         android:id="@+id/bar_left"
         android:layout_marginLeft="17dp"
         android:src="@mipmap/back"
@@ -18,7 +19,7 @@
         android:singleLine="true"
         android:paddingLeft="16dp"
         android:background="@drawable/edit_bg"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="14dp"
         tools:hint="ajdbjbfdssjfsdffsfd"
         android:textSize="@dimen/text13"
         android:textColorHint="@color/color999"

@@ -9,7 +9,7 @@ public class HomeBean {
     /**
      * code : 1
      * msg : 操作成功
-     * data : {"month_income":"3500.82","day_income":"372.00","invalid_withdraw":"7210.00","day_order_num":"102","using_equipment":"23","standby_equipment":"37"}
+     * data : {"month_income":"0.00","day_income":"0.00","invalid_withdraw":"31.69","day_order_num":"0","using_equipment":"0","standby_equipment":"0","wt":"https://api.ud-share.cn/app/freezingAmount.html"}
      */
 
     public int code;
@@ -18,12 +18,13 @@ public class HomeBean {
 
     public static class DataBean {
         /**
-         * month_income : 3500.82
-         * day_income : 372.00
-         * invalid_withdraw : 7210.00
-         * day_order_num : 102
-         * using_equipment : 23
-         * standby_equipment : 37
+         * month_income : 0.00
+         * day_income : 0.00
+         * invalid_withdraw : 31.69
+         * day_order_num : 0
+         * using_equipment : 0
+         * standby_equipment : 0
+         * wt : https://api.ud-share.cn/app/freezingAmount.html
          */
 
         public String month_income;
@@ -32,5 +33,9 @@ public class HomeBean {
         public String day_order_num;
         public String using_equipment;
         public String standby_equipment;
+        public String wt;
     }
 }
+
+
+

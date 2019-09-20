@@ -19,7 +19,7 @@ public class LoginActivity extends BaseFragmentActivity {
     @Override
     protected BaseFragment getFirstFragment() {
 
-        return new LoginSmsFragment();
+        return new LoginPsdFragment();
     }
 
 

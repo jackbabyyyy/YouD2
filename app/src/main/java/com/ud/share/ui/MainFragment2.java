@@ -14,7 +14,10 @@ import com.qmuiteam.qmui.widget.QMUIPagerAdapter;
 import com.qmuiteam.qmui.widget.QMUIViewPager;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
+import com.ud.share.comm.InstallObjectEnum;
 import com.ud.share.ui.home.HomeFragment2;
+import com.ud.share.ui.home.page.BusinessAddFragment;
+import com.ud.share.ui.install.ChooseBusinessFragment;
 import com.ud.share.ui.install.InstallFragment;
 import com.ud.share.ui.my.MyFragment;
 import com.ud.share.ui.shop.ShopFragment;
@@ -79,11 +82,6 @@ public class MainFragment2 extends BaseFragment  {
     }
 
     private void initTabs() {
-
-
-
-
-
     }
 
     private void initPagers() {
@@ -101,7 +99,7 @@ public class MainFragment2 extends BaseFragment  {
                     case 1:
                         return new StatisticsFragment();
                     case 2:
-                        return new InstallFragment();
+                        return ChooseBusinessFragment.getInstance(InstallObjectEnum.BUSINESS.getId());
                     case 3:
                         return new ShopFragment();
                     case 4:
@@ -187,6 +185,8 @@ public class MainFragment2 extends BaseFragment  {
                 return "QDFitSystemWindowViewPagerFragment:" + viewId + ":" + id;
             }
         };
+
+
 
 
         mViewPager.setAdapter(adapter);

@@ -58,6 +58,7 @@ public class ProxyListBean {
             public String level_type;
             public String avatar;
             public String real_name;
+            public String agent_name;
             public String deposit;
             public String phone;
             public String line_rate;
@@ -72,6 +73,7 @@ public class ProxyListBean {
             public String sum_agents;
             public String total_rent;
             public List<EquipmentBean> equipment;
+            public int agetn_level;
 
             public static class EquipmentBean {
                 /**

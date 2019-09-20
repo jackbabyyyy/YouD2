@@ -13,6 +13,7 @@ import com.ud.share.model.InfoBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
 import com.ud.share.utils.AppData;
+import com.ud.share.utils.StringUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,7 +73,7 @@ public class InfoFragment extends BaseFragment {
         mBar.addRightTextButton("修改", R.id.topbar_right).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startFragment(InfoChangeFragment.getInstance(mNextString));
+                startFragment(InfoChangeFragment2.getInstance(mNextString));
 
             }
         });
@@ -92,7 +93,7 @@ public class InfoFragment extends BaseFragment {
         InfoBean infoBean = JSON.parseObject(lastPageString, InfoBean.class);
         List<String> contents = new ArrayList<>();
         contents.add(infoBean.data.realname);
-        contents.add(infoBean.data.phone);
+        contents.add(StringUtils.getPhoneX(infoBean.data.phone));
         contents.add(infoBean.data.card_sn);
         contents.add(infoBean.data.credit_num);
         contents.add(infoBean.data.bank_name);

@@ -42,7 +42,7 @@ public class ShopFragment extends BaseFragment {
     protected void init() {
         mBar.setTitle("幽电-商城");
 
-        mShopItems.add(new ShopItem(R.mipmap.shop1,"幽电GA05共享充电柜"));
+        mShopItems.add(new ShopItem(R.mipmap.shop1,"幽电GA06共享充电柜"));
         mShopItems.add(new ShopItem(R.mipmap.shop2,"幽电XA05共享充电线"));
 
         ShopAdapter adapter=new ShopAdapter(mShopItems);

@@ -15,7 +15,7 @@
         android:text="确定分配"
         android:layout_marginBottom="6dp"
         android:layout_gravity="bottom"
-        android:background="@mipmap/btn"
+        android:background="@drawable/radius_bg_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="42dp"/>
 </android.support.constraint.ConstraintLayout>

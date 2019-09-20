@@ -93,6 +93,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     private boolean isfirstinput = true;
     private PoiItem firstItem;
     private PoiItem mPoiItem;
+    private String mCity;
 
 
     @Override
@@ -114,20 +115,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
 
     }
 
-//    private void getAdcode(){
-//        String url="https://restapi.amap.com/v3/geocode/geo?address="+mAddr+"&city="+mCity+"&key="+ AppUrl.mapkey;
-//        HttpUtil.getInstance(this).getAsynHttp(url, new HttpUtil.ResultCallback() {
-//            @Override
-//            public void onError(Request request, Exception e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(String s) throws IOException {
-//
-//            }
-//        });
-//    }
+
     private void initView() {
         QMUITopBarLayout mBar=findViewById(R.id.bar);
         mBar.setTitle("位置");
@@ -140,6 +128,10 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
         mBar.addRightTextButton("确定",R.id.topbar_right).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(mPoiItem==null){
+                    mPoiItem=(PoiItem) searchResultAdapter.getItem(0);
+                }
                 if (mPoiItem!=null){
                     Intent intent=new Intent();
                     intent.putExtra("adcode",mPoiItem.getAdCode()+"");
@@ -159,12 +151,11 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
 
         listView.setOnItemClickListener(onItemClickListener);
 
-
-
         searchText = (AutoCompleteTextView) findViewById(R.id.keyWord);
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
 
             }
 
@@ -172,7 +163,9 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String newText = s.toString().trim();
                 if (newText.length() > 0) {
-                    InputtipsQuery inputquery = new InputtipsQuery(newText, "北京");
+
+                    InputtipsQuery inputquery = new InputtipsQuery(newText,mCity);
+
                     Inputtips inputTips = new Inputtips(MapActivity.this, inputquery);
                     inputquery.setCityLimit(true);
                     inputTips.setInputtipsListener(inputtipsListener);
@@ -378,7 +371,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     protected void doSearchQuery() {
 //        Log.i("MY", "doSearchQuery");
         currentPage = 0;
-        query = new PoiSearch.Query(searchKey, "", "");// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
+        query = new PoiSearch.Query(searchKey, "", mCity);// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
         query.setCityLimit(true);
         query.setPageSize(20);
         query.setPageNum(currentPage);
@@ -399,6 +392,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
                     && result.getRegeocodeAddress().getFormatAddress() != null) {
                 String address = result.getRegeocodeAddress().getProvince() + result.getRegeocodeAddress().getCity() + result.getRegeocodeAddress().getDistrict() + result.getRegeocodeAddress().getTownship();
                 firstItem = new PoiItem("regeo", searchLatlonPoint, address, address);
+                mCity = result.getRegeocodeAddress().getCity();
                 doSearchQuery();
             }
         } else {
@@ -446,6 +440,9 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
 
         searchResultAdapter.setData(resultData);
         searchResultAdapter.notifyDataSetChanged();
+
+
+
     }
 
 

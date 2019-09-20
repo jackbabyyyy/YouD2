@@ -2,6 +2,7 @@ package com.ud.share.ui.home.page;
 
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,12 +21,17 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
-import com.ud.share.map.LngLatManager;
-import com.ud.share.map.OnLngLatChangeListener;
+
+import com.ud.share.event.FreshBusinessEvent;
+
 import com.ud.share.model.BusinessIncomeBean;
 import com.ud.share.model.BusinessListBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,7 +56,7 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
     @BindView(R.id.recycler)
     RecyclerView mRecyclerView;
 
-    private static final String TAG=BusinessFragment.class.getSimpleName();
+    private static final String TAG = BusinessFragment.class.getSimpleName();
 
     private List<BusinessListBean.DataBeanX.DataBean> mData = new ArrayList<>();
     private BusinessAdapter mAdapter;
@@ -60,20 +66,19 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
     private TextView mAgentSum;
     private MyTextWatcher mWatcher;
 
+    private String mLng = "", mLat = "";
 
-    private String mLng="",mLat="";
+    public static BusinessFragment getInstance(String lng, String lat) {
 
-
-    public static BusinessFragment getInstance(String lng,String lat){
-
-        BusinessFragment fragment=new BusinessFragment();
-        Bundle bundle=new Bundle();
-        bundle.putString("lng",lng);
-        bundle.putString("lat",lat);
+        BusinessFragment fragment = new BusinessFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("lng", lng);
+        bundle.putString("lat", lat);
         fragment.setArguments(bundle);
-        return  fragment;
+        return fragment;
 
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_business;
@@ -83,11 +88,9 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
     protected void init() {
 
         mSearch.setHint("请输入商户名称或者手机号码");
-        mLng=getArguments().getString("lng");
-        mLat=getArguments().getString("lat");
-
-
-
+        mLng = getArguments().getString("lng");
+        mLat = getArguments().getString("lat");
+        EventBus.getDefault().register(this);
 
 
         //
@@ -98,7 +101,12 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
             @Override
             public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
-                outRect.top= QMUIDisplayHelper.dp2px(getActivity(),24);
+
+                if (parent.getChildAdapterPosition(view) != 0) {
+                    outRect.bottom = QMUIDisplayHelper.dp2px(getActivity(), 24);
+                }
+
+
             }
         });
         mAdapter.setOnLoadMoreListener(this, mRecyclerView);
@@ -123,6 +131,7 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
         mAdapter.addHeaderView(view);
 
         getBusinessIncome();
+        getBusinessList();
         mWatcher = new MyTextWatcher();
 
     }
@@ -133,8 +142,8 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
         map.put("per_page", "10");
         map.put("page", mPage + "");
         map.put("qstr", mSearch.getText().toString());
-        map.put("longitude",mLng);
-        map.put("latitude",mLat);
+        map.put("longitude", mLng);
+        map.put("latitude", mLat);
         HttpUtil.getInstance(getActivity())
                 .postForm(AppUrl.businessGet, map, new HttpUtil.ResultCallback() {
                     @Override
@@ -145,10 +154,11 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
                     @Override
                     public void onResponse(String response) throws IOException {
 
-                        if (response.equals(JSON.toJSONString(mBean))){
+                        if (response.equals(JSON.toJSONString(mBean))) {
                             return;
                         }
                         mBean = JSON.parseObject(response, BusinessListBean.class);
+
 
                         mAdapter.addData(mBean.data.data);
                         mAdapter.loadMoreComplete();
@@ -199,7 +209,7 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
                 break;
             case R.id.bn_business_add:
 
-                startFragment(BusinessAddFragment.getInstance(BusinessAddFragment.ADD, "", ""));
+                startFragment(new BusinessAddFragment());
 
                 break;
 
@@ -213,7 +223,7 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
             mAdapter.loadMoreEnd();
             return;
         }
-        Log.d(TAG, "getBusinessList: 3");
+
 
         getBusinessList();
 
@@ -223,14 +233,8 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
     @Override
     public void onResume() {
         super.onResume();
-        //刷新
-        mPage = 1;
-        mAdapter.getData().clear();
-        mAdapter.notifyDataSetChanged();
-        Log.d(TAG, "getBusinessList: 4");
 
-        getBusinessList();
-//
+
         mSearch.addTextChangedListener(mWatcher);
 
     }
@@ -241,7 +245,7 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
         mSearch.removeTextChangedListener(mWatcher);
     }
 
-    public class MyTextWatcher implements TextWatcher{
+    public class MyTextWatcher implements TextWatcher {
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -255,9 +259,9 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (TextUtils.isEmpty(s.toString())){
+            if (TextUtils.isEmpty(s.toString())) {
                 closeKeyBorad();
-                mPage=1;
+                mPage = 1;
                 mAdapter.getData().clear();
                 getBusinessList();
             }
@@ -265,11 +269,21 @@ public class BusinessFragment extends BaseFragment implements BaseQuickAdapter.R
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(FreshBusinessEvent event) {
+        //刷新
+        mPage = 1;
+        mAdapter.getData().clear();
+        mAdapter.notifyDataSetChanged();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getBusinessList();
+            }
+        }, 180);
 
 
-
-
-
+    }
 
 
 }

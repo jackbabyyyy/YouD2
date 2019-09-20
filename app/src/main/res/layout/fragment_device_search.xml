@@ -124,9 +124,9 @@
             android:text="确定搜索"
             android:layout_marginBottom="6dp"
             android:layout_gravity="bottom"
-            android:background="@mipmap/btn"
+            android:background="@drawable/radius_bg_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="42dp"/>
 
     </LinearLayout>
 

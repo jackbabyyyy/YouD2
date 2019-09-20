@@ -48,6 +48,8 @@ public class HttpUtil {
     private static final String TAG = HttpUtil.class.getSimpleName();
 
 
+
+
     public static final int NORMAL = 1;
     public static final String TOKEN = "user-token";
 
@@ -107,9 +109,9 @@ public class HttpUtil {
                 .sslSocketFactory(createSSL())
                 .hostnameVerifier(new TrustAllHostnameVerifier())
 
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
                 .cache(new Cache(sdcache.getAbsoluteFile(), cacheSize));//设置缓存的路径
         client = builder.build();
         mHandler = new Handler();
@@ -134,10 +136,14 @@ public class HttpUtil {
      * @param callback
      */
     public void getAsynHttp(String url, final ResultCallback callback) {
+
         Request request = new Request.Builder()
                 .url(url)
+                .addHeader(TOKEN, SP.getToken(mContext))//采用post提交数据
                 .build();
         client.newCall(request).enqueue(new Callback() {
+
+
             @Override
             public void onFailure(Call call, IOException e) {
                 sendFailedCallback(call, e, callback);
@@ -145,7 +151,29 @@ public class HttpUtil {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                sendSuccessCallback(response.body().string(), callback);
+                if (response.isSuccessful() && response != null) {
+                    String s = response.body().string();
+
+                    try{
+                        BaseJson baseJson = JSON.parseObject(s, BaseJson.class);
+
+                        if (baseJson.code == NORMAL) {
+                            sendSuccessCallback(s, callback);
+                        } else {
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(mContext, baseJson.msg, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }catch (Exception e){
+
+                    }
+
+
+
+                }
             }
         });
     }
@@ -177,19 +205,17 @@ public class HttpUtil {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d(TAG, "fail: " + request.url() + "-----" + e.getMessage());
+
                 sendFailedCallback(call, e, callback);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d(TAG, "token " + SP.getToken(mContext));
+
 
 
                 if (response == null || !response.isSuccessful()) {
-                    Log.e(TAG, "onResponse: is null or fail"
-                            + request.url()+"||"+response.body().string()
-                    );
+
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -200,19 +226,25 @@ public class HttpUtil {
 
                 if (response.isSuccessful() && response != null) {
                     String s = response.body().string();
-                    Log.d(TAG, "request: " + request.url());
-                    Log.d(TAG, "response: " + s);
-                    BaseJson baseJson = JSON.parseObject(s, BaseJson.class);
+                    Log.d(TAG, "onResponse: "+s);
 
-                    if (baseJson.code == NORMAL) {
-                        sendSuccessCallback(s, callback);
-                    } else {
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                               Toast.makeText(mContext, baseJson.msg, Toast.LENGTH_LONG).show();
-                            }
-                        });
+
+                    try{
+
+                        BaseJson baseJson = JSON.parseObject(s, BaseJson.class);
+                        if (baseJson.code == NORMAL||url.contains(AppUrl.cashApply)) {
+                            sendSuccessCallback(s, callback);
+                        } else {
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(mContext, baseJson.msg, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+
+                    }catch (Exception e){
+
                     }
 
 

@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:tag_gravity="center"
+
+        android:id="@+id/flow"
+        app:max_select="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </com.zhy.view.flowlayout.TagFlowLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/start"
+            android:gravity="center"
+            android:background="@drawable/edit_bg"
+            android:hint="开始日期"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"/>
+        <TextView
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="至"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+
+            android:id="@+id/end"
+            android:gravity="center"
+            android:background="@drawable/edit_bg"
+            android:hint="结束日期"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"/>
+        <TextView
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:id="@+id/search"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/bg_label_un"
+            android:text="查询"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:divider="@null"
+        android:scrollbars="none"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
 
 
 

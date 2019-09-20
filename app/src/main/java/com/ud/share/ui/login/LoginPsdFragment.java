@@ -52,7 +52,6 @@ public class LoginPsdFragment extends BaseFragment {
     protected void init() {
         mEtPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
-
     }
 
 
@@ -63,7 +62,8 @@ public class LoginPsdFragment extends BaseFragment {
                 getLoginPass();
                 break;
             case R.id.tv_sms:
-                popBackStack();
+                startFragment(new LoginSmsFragment());
+
                 break;
         }
     }

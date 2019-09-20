@@ -116,7 +116,7 @@
                     android:id="@+id/contact"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:background="@drawable/edit_bg"
+                    android:background="@null"
                     android:paddingLeft="25dp"
                     android:textColor="@color/color333"
                     android:textSize="@dimen/text14"
@@ -143,18 +143,36 @@
                     android:textSize="@dimen/text14"/>
 
                 <EditText
+                    android:layout_weight="1"
                     android:inputType="phone"
                     android:id="@+id/mobile"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/edit_bg"
+                    android:background="@null"
                     android:paddingLeft="25dp"
                     android:textColor="@color/color333"
                     android:textSize="@dimen/text14"
                     tools:text="jdjsdfsfjsdfjsdfj"/>
 
+                <TextView
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:textColor="@color/theme2"
+                    android:background="@drawable/bg_label"
+                    android:id="@+id/changePhone"
+                    android:layout_marginLeft="8dp"
+
+                    android:text="修改"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+
+
 
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -314,6 +332,8 @@
                         tools:text="jdjsdfadedeefewfefewfwefewf"/>
 
                     <EditText
+                        android:text="0"
+                        android:visibility="gone"
                         android:inputType="numberDecimal"
                         android:id="@+id/rate_package"
                         android:layout_width="match_parent"

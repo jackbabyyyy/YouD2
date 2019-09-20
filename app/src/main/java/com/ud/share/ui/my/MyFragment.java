@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
+import com.ud.share.utils.GlideManager;
 import com.walkermanx.photopicker.PhotoPicker;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
@@ -100,14 +101,12 @@ public class MyFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
                     startFragment(PassChangeFragment.getInstance(false));
                 } else {
                     startFragment(PassChangeFragment.getInstance(true));
-
                 }
                 break;
             case 3://关于我们
                 startFragment(WebFragment.getInstance(AppData.getH5().data.about));
                 break;
             case 4:
-
                 showLoginOut();
                 break;
         }
@@ -172,14 +171,16 @@ public class MyFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
             case R.id.info:
                 startFragment(InfoFragment.getInstance(mToNextPageString));
                 break;
+
+
         }
     }
 
     private void getInfo() {
         mToNextPageString = SP.getInfo(getActivity());
         mInfoBean = JSON.parseObject(mToNextPageString, InfoBean.class);
-        //
-        Glide.with(getActivity()).load(mInfoBean.data.avatar).into(mCircleImageView);
+
+        Glide.with(getActivity()).load(mInfoBean.data.avatar).apply(GlideManager.getGlideOptions()).into(mCircleImageView);
         mTvName.setText(mInfoBean.data.realname);
 
     }

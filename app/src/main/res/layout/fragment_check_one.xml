@@ -64,9 +64,9 @@
         android:text="确定"
         android:layout_marginBottom="38dp"
         android:layout_gravity="bottom"
-        android:background="@mipmap/btn"
+        android:background="@drawable/radius_bg_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="42dp"/>
 
     <com.qmuiteam.qmui.widget.QMUITopBarLayout
         android:id="@+id/bar"

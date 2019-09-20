@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -15,11 +14,14 @@ import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
+import com.ud.share.event.FreshProxyEvent;
 import com.ud.share.model.BaseJson;
 import com.ud.share.model.ProxyListBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
 import com.ud.share.utils.AppData;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -94,8 +96,8 @@ public class ProxyChangeFragment extends BaseFragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mRecycler.getLayoutManager().findViewByPosition(0).findViewById(R.id.content).setEnabled(false);
                 mRecycler.getLayoutManager().findViewByPosition(1).findViewById(R.id.content).setEnabled(false);
+                mRecycler.getLayoutManager().findViewByPosition(2).findViewById(R.id.content).setEnabled(false);
 
             }
         },100);
@@ -108,17 +110,19 @@ public class ProxyChangeFragment extends BaseFragment {
             @Override
             public void run() {
 
-        String line=((EditText) mRecycler.getLayoutManager().findViewByPosition(2).findViewById(R.id.content)).getText().toString();
-        String cabinet=((EditText) mRecycler.getLayoutManager().findViewByPosition(3).findViewById(R.id.content)).getText().toString();
+        String line=((EditText) mRecycler.getLayoutManager().findViewByPosition(3).findViewById(R.id.content)).getText().toString();
+//        String cabinet=((EditText) mRecycler.getLayoutManager().findViewByPosition(4).findViewById(R.id.content)).getText().toString();
         String deposit=((EditText) mRecycler.getLayoutManager().findViewByPosition(4).findViewById(R.id.content)).getText().toString();
+        String agent_name=((EditText) mRecycler.getLayoutManager().findViewByPosition(0).findViewById(R.id.content)).getText().toString();
 
 
         Map<String,String> map=new HashMap<>();
         map.put("agent_id",mDataBean.agent_id+"");
         map.put("line_rate",line);
-        map.put("cabinet_rate",cabinet);
+        map.put("cabinet_rate","0");
         map.put("deposit",deposit);
-                Log.d("http", "run: "+mDataBean.agent_id+"A"+line+"A"+cabinet+"A"+deposit);
+        map.put("agent_name",agent_name);
+
         HttpUtil.getInstance(getActivity())
                 .postForm(AppUrl.proxyChange, map, new HttpUtil.ResultCallback() {
                     @Override
@@ -128,6 +132,7 @@ public class ProxyChangeFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response) throws IOException {
+                        EventBus.getDefault().post(new FreshProxyEvent());
                         BaseJson json= JSON.parseObject(response,BaseJson.class);
                         showToast(json.msg);
                         popBackStack();

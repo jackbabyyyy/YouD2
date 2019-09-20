@@ -10,9 +10,10 @@
     android:layout_height="wrap_content">
 
 <android.support.constraint.ConstraintLayout
+    android:background="@mipmap/home_bg"
     android:layout_margin="15dp"
     android:layout_width="match_parent"
-    android:background="@mipmap/home_bg"
+
     android:layout_height="188dp">
 
 
@@ -61,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="历史提现记录>"
+        android:text="历史提现记录"
         android:textColor="@color/white"
         android:textSize="@dimen/text11"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
@@ -69,6 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"/>
 
     <TextView
+
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,13 +78,14 @@
 
         android:drawablePadding="2dp"
         android:drawableLeft="@mipmap/home_rmb"
-        android:text="累计收入："
+        android:text="今日收益："
         android:textColor="@color/white"
         android:textSize="@dimen/text12"
         app:layout_constraintStart_toStartOf="@+id/tvMonth"
         app:layout_constraintTop_toBottomOf="@+id/tvMonth"/>
 
     <TextView
+
         android:id="@+id/tvToday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

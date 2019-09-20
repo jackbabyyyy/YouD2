@@ -40,7 +40,6 @@ import okhttp3.Request;
  */
 public class HomeFragment2 extends BaseFragment {
 
-
     @BindView(R.id.bar)
     QMUITopBar mBar;
     @BindView(R.id.recycler_mid)
@@ -54,10 +53,11 @@ public class HomeFragment2 extends BaseFragment {
     TextView mTvGet;
     @BindView(R.id.tvCash)
     TextView mTvHistory;
-    @BindView(R.id.tvToday)
-    TextView mTvAll;
 
-    @OnClick({R.id.textView3,R.id.tvCash})
+    @BindView(R.id.tvToday)
+    TextView mTvToday;
+
+    @OnClick({R.id.textView3,R.id.tvCash,R.id.myself_device,R.id.agent_device})
     public void onViewClicked(View view) {
         switch (view.getId()){
             case  R.id.textView3:
@@ -65,6 +65,14 @@ public class HomeFragment2 extends BaseFragment {
                 break;
             case R.id.tvCash:
                 startFragment(new CashFragment());
+                break;
+
+            case R.id.myself_device:
+                startFragment( DeviceFragment.getInsatnce(1));
+                break;
+            case R.id.agent_device:
+                startFragment(DeviceFragment.getInsatnce(2));
+
                 break;
         }
 
@@ -97,7 +105,7 @@ public class HomeFragment2 extends BaseFragment {
 
                 switch (position) {
                     case 0:
-                        startFragment(OrderFragment.getInstance(1));
+                        startFragment(OrderFragment.getInstance(0));
                         break;
                     case 1:
                         startFragment(OrderFragment.getInstance(0));
@@ -107,7 +115,7 @@ public class HomeFragment2 extends BaseFragment {
                         break;
                     case 3:
                         //今日收益
-                        showTODO();
+                        startFragment(new ProfitDetailFragment());
                         break;
                 }
 
@@ -125,7 +133,7 @@ public class HomeFragment2 extends BaseFragment {
                         startFragment(new ProxyFragment());
                         break;
                     case 2:
-                        startFragment(new DeviceFragment());
+                        startFragment( DeviceFragment.getInsatnce(-1));
                         break;
                     case 3:
                         startFragment(OrderFragment.getInstance(0));
@@ -134,32 +142,30 @@ public class HomeFragment2 extends BaseFragment {
                         startFragment(new ProfitDetailFragment());
                         break;
                     case 5:
-                        startFragment(new CashGetFragment());
+                        startFragment(new CashFragment());
                         break;
                     case 6:
-                        showTODO();
-                        //todo 佣金管理
+                      showTODO();
                         break;
                     case 7:
-                        showTODO();
-                        //todo 分润设置
-                        break;
-                    case 8:
-                        showTODO();
-                        //todo 设备故障
-                        break;
-                    case 9:
                         startFragment(new ExtendFragment());
-                        //todo 幽电分享
                         break;
-                    case 10:
-                        showTODO();
-                        //todo 超级用户
-                        break;
-                    case 11:
-                        showTODO();
-                        //todo 更多
-                        break;
+//                    case 8:
+//                        showTODO();
+//                        //todo 设备故障
+//                        break;
+//                    case 9:
+//                        startFragment(new ExtendFragment());
+//                        //todo 幽电分享
+//                        break;
+//                    case 10:
+//                        showTODO();
+//                        //todo 超级用户
+//                        break;
+//                    case 11:
+//                        showTODO();
+//                        //todo 更多
+//                        break;
                 }
             }
         });
@@ -180,6 +186,7 @@ public class HomeFragment2 extends BaseFragment {
                 HomeBean bean= JSON.parseObject(s,HomeBean.class);
 
                 mTvProfit.setText(bean.data.invalid_withdraw);
+                mTvToday.setText(bean.data.day_income);
 
 
 

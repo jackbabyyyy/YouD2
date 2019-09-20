@@ -3,6 +3,8 @@ package com.ud.share.custom;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
+import com.ud.share.R;
+
 import org.jaaksi.pickerview.adapter.NumericWheelAdapter;
 import org.jaaksi.pickerview.picker.BasePicker;
 import org.jaaksi.pickerview.util.DateUtil;
@@ -164,6 +166,10 @@ public class TimeSelectPicker extends BasePicker implements BasePickerView.OnSel
             }
 
         }
+
+
+//        mDatePicker.setColor(mContext.getResources().getColor(R.color.theme),mContext.getResources().getColor(R.color.color666));
+//        mTimePicker.setColor(mContext.getResources().getColor(R.color.theme),mContext.getResources().getColor(R.color.color666));
     }
 
     private void handleData() {
@@ -452,6 +458,8 @@ public class TimeSelectPicker extends BasePicker implements BasePickerView.OnSel
             mContext = context;
             mType = type;
             mOnTimeSelectListener = onTimeSelectListener;
+
+
         }
 
         /**

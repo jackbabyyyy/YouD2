@@ -3,7 +3,6 @@ package com.ud.share.ui.home.page;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -14,18 +13,19 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
-import com.walkermanx.photopicker.PhotoPicker;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
 import com.ud.share.custom.TimeSelectPicker;
+import com.ud.share.event.FreshBusinessEvent;
 import com.ud.share.map.MapActivity;
 import com.ud.share.model.BaseJson;
 import com.ud.share.model.ImgBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
-import com.ud.share.ui.install.ChooseBusinessFragment;
+import com.ud.share.utils.TimeCount;
+import com.walkermanx.photopicker.PhotoPicker;
 
-
+import org.greenrobot.eventbus.EventBus;
 import org.jaaksi.pickerview.topbar.DefaultTopBar;
 
 import java.io.File;
@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -81,16 +82,25 @@ public class BusinessAddFragment extends BaseFragment {
     @BindView(R.id.install)
     Button mInstall;
 
+    @BindView(R.id.et_sms)
+    EditText mEtSms;
+    @BindView(R.id.tv_sms)
+    TextView mTvSms;
+
+
+
     private String mArea;
     private String mHeadUrl = "";
     private String mLat;
     private String mLng;
     private String mAdcode;
-    private String mSns;
-    private String mModel;
+//    private String mSns;
+//    private String mModel;
 
-    public static final int ADD=0;
-    public static final int INSTALL=1;
+    private TimeCount mCount;
+
+
+
 
     @Override
     protected int getLayoutId() {
@@ -99,22 +109,23 @@ public class BusinessAddFragment extends BaseFragment {
 
     @Override
     protected void init() {
-       int type=getArguments().getInt("type");
-       if (type==INSTALL){
-           mSns = getArguments().getString("sns");
-           mModel = getArguments().getString("model");
+//       int type=getArguments().getInt("type");
 
-           mBar.setTitle("铺货");
-           mBar.addRightTextButton("选择商户", R.id.topbar_right).setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   startFragment(ChooseBusinessFragment.getInstance(mSns,mModel));
-               }
-           });
-
-           mInstall.setVisibility(View.VISIBLE);
-
-       }else{
+//       if (type==INSTALL){
+//           mSns = getArguments().getString("sns");
+//           mModel = getArguments().getString("model");
+//
+//           mBar.setTitle("铺货");
+//           mBar.addRightTextButton("选择商户", R.id.topbar_right).setOnClickListener(new View.OnClickListener() {
+//               @Override
+//               public void onClick(View v) {
+//                //   startFragment(ChooseBusinessFragment.getInstance(mSns,mModel));
+//               }
+//           });
+//
+//           mInstall.setVisibility(View.VISIBLE);
+//
+//       }else{
 
 
            mBar.setTitle("新增商户");
@@ -126,7 +137,9 @@ public class BusinessAddFragment extends BaseFragment {
            });
 
            mInstall.setVisibility(View.GONE);
-       }
+//       }
+
+        mCount = new TimeCount(60000,1000,mTvSms,getActivity());
 
 
         ((TextView) t1.findViewById(R.id.section_name)).setText("商户图片");
@@ -144,18 +157,27 @@ public class BusinessAddFragment extends BaseFragment {
             }
         });
 
+        mTvSms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getSms();
+
+            }
+        });
+
 
     }
 
-    public static BusinessAddFragment getInstance(int type,String snsArray,String model){
-        Bundle bundle=new Bundle();
-        bundle.putInt("type",type);
-        bundle.putString("sns",snsArray);
-        bundle.putString("model",model);
-        BusinessAddFragment fragment=new BusinessAddFragment();
-        fragment.setArguments(bundle);
-        return fragment;
-    }
+//    public static BusinessAddFragment getInstance(int type,String snsArray,String model){
+//        Bundle bundle=new Bundle();
+//        bundle.putInt("type",type);
+//        bundle.putString("sns",snsArray);
+//        bundle.putString("model",model);
+//        BusinessAddFragment fragment=new BusinessAddFragment();
+//        fragment.setArguments(bundle);
+//        return fragment;
+//    }
 
     //新增商户和下拨设备公用
     private void installDevice() {
@@ -166,7 +188,7 @@ public class BusinessAddFragment extends BaseFragment {
         }
         String contact = mContact.getText().toString();
         if (TextUtils.isEmpty(contact)) {
-            showToast("请输入联系人");
+            showToast("请输入负责人实名");
             return;
         }
         String mobile = mMobile.getText().toString();
@@ -215,6 +237,11 @@ public class BusinessAddFragment extends BaseFragment {
             showToast("请输入线充12小时价格");
             return;
         }
+        String smsCode=mEtSms.getText().toString().trim();
+        if (TextUtils.isEmpty(smsCode)){
+            showToast("请输入短信验证码");
+            return;
+        }
 
         HashMap<String, String> map = new HashMap<>();
         map.put("name", name);
@@ -233,11 +260,12 @@ public class BusinessAddFragment extends BaseFragment {
         map.put("line_hour_2", line2);
         map.put("line_hour_6", line6);
         map.put("line_hour_12", line12);
+        map.put("sms_code",smsCode);
 
-        if (!TextUtils.isEmpty(mModel)){
-            map.put("model",mModel);
-            map.put("sns",mSns);
-        }
+//        if (!TextUtils.isEmpty(mModel)){
+//            map.put("model",mModel);
+//            map.put("sns",mSns);
+//        }
 
 
         HttpUtil.getInstance(getActivity())
@@ -247,8 +275,10 @@ public class BusinessAddFragment extends BaseFragment {
 
                     }
 
+
                     @Override
                     public void onResponse(String s) throws IOException {
+                        EventBus.getDefault().post(new FreshBusinessEvent());
                         BaseJson baseJson=JSON.parseObject(s,BaseJson.class);
                         showToast(baseJson.msg);
                         popBackStack();
@@ -294,6 +324,7 @@ public class BusinessAddFragment extends BaseFragment {
                 pickerDialog.setCanceledOnTouchOutside(true);
                 DefaultTopBar topBar = (DefaultTopBar) mTimePicker.getTopBar();
                 topBar.getTitleView().setText("请选择时间");
+
                 pickerDialog.show();
 
 
@@ -336,6 +367,7 @@ public class BusinessAddFragment extends BaseFragment {
 
     private void upload(String path) {
         Luban.with(getActivity())
+
                 .load(Uri.fromFile(new File(path))).ignoreBy(50).filter(new CompressionPredicate() {
             @Override
             public boolean apply(String path) {
@@ -382,4 +414,43 @@ public class BusinessAddFragment extends BaseFragment {
                 });
     }
 
+    private void getSms() {
+
+        String text=mMobile.getText().toString();
+        if (TextUtils.isEmpty(text)&&text.length()!=11){
+            showToast("请填写手机号码");
+            return;
+        }
+
+
+        Map<String,String> map=new HashMap<>();
+        map.put("phone",text);
+        map.put("type","2");//2 商户
+        HttpUtil.getInstance(getActivity())
+                .postForm(AppUrl.getDefSms, map, new HttpUtil.ResultCallback() {
+                    @Override
+                    public void onError(Request request, Exception e) {
+
+
+                    }
+
+                    @Override
+                    public void onResponse(String response)  {
+                        BaseJson baseJson= JSON.parseObject(response,BaseJson.class);
+                        showToast(baseJson.msg);
+
+
+
+
+                    }
+                });
+
+        mCount.start();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mCount.cancel();
+    }
 }

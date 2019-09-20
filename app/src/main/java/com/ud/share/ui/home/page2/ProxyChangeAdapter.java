@@ -33,6 +33,12 @@ public class ProxyChangeAdapter extends BaseQuickAdapter<AppData.AgentInfoBean, 
         }else{
             des.setVisibility(View.VISIBLE);
         }
+        if (item.title.contains("联系方式")||item.title.contains("姓  名")){
+            content.setBackground(null);
+        }else{
+            content.setBackgroundResource(R.drawable.edit_bg);
+        }
+
 
     }
 

@@ -57,6 +57,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/myself_device"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -67,7 +68,7 @@
 
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:background="@mipmap/home_mid_bg">
+                        android:background="@drawable/radius_bg_green">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -106,11 +107,7 @@
 
                     </RelativeLayout>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitXY"
-                        android:src="@mipmap/home_mid_shadow"/>
+
 
 
                 </LinearLayout>
@@ -120,6 +117,7 @@
                     android:layout_height="40dp"/>
 
                 <LinearLayout
+                    android:id="@+id/agent_device"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -129,7 +127,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:background="@mipmap/home_mid_bg">
+                        android:background="@drawable/radius_bg_green">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -168,11 +166,7 @@
 
                     </RelativeLayout>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitXY"
-                        android:src="@mipmap/home_mid_shadow"/>
+
 
                 </LinearLayout>
             </LinearLayout>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="25dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
+
+                <TextView
+                    android:textSize="@dimen/text14"
+
+                    android:textColor="@color/color333"
+                    android:text="姓名"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="25dp"
+                    tools:text="sv"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color999"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/name"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
+
+                <TextView
+                    android:textSize="@dimen/text14"
+
+                    android:textColor="@color/color333"
+                    android:text="手机号"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_weight="1"
+
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="25dp"
+                    tools:text="sv"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color999"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/phone"
+                    android:background="@null"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"/>
+                <TextView
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:textColor="@color/theme2"
+                    android:background="@drawable/bg_label"
+                    android:id="@+id/changePhone"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="15dp"
+                    android:text="修改"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+                    android:textSize="@dimen/text14"
+
+                    android:textColor="@color/color333"
+                    android:text="身份证号"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="25dp"
+                    tools:text="sv"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color999"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/cer"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
+
+                <TextView
+                    android:textSize="@dimen/text14"
+
+                    android:textColor="@color/color333"
+                    android:text="银行卡号"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="25dp"
+                    tools:text="sv"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color999"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/bank"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
+
+                <TextView
+                    android:textSize="@dimen/text14"
+
+                    android:textColor="@color/color333"
+                    android:text="所属银行"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="25dp"
+                    tools:text="sv"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color999"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/bank2"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
+
+                <TextView
+                    android:textSize="@dimen/text14"
+
+                    android:textColor="@color/color333"
+                    android:text="所属分行"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="25dp"
+                    tools:text="sv"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color999"
+                    android:textSize="@dimen/text14"
+                    android:id="@+id/bank3"
+                    android:background="@drawable/edit_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

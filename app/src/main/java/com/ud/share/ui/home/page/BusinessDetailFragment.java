@@ -2,6 +2,7 @@ package com.ud.share.ui.home.page;
 
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -143,11 +144,14 @@ public class BusinessDetailFragment extends BaseFragment {
 
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
         getData();
+
     }
+
 
     private void getData() {
         HashMap<String, String> map = new HashMap<>();
@@ -163,13 +167,15 @@ public class BusinessDetailFragment extends BaseFragment {
                 mInfoJson = s;
                 BusinessDetailBean bean = JSON.parseObject(s, BusinessDetailBean.class);
                 //
+
                 Glide.with(getActivity()).load(bean.data.seller.picture).into(mHead);
                 mName.setText(bean.data.seller.name);
                 mContacts.setText(bean.data.seller.contacts);
                 mMobile.setText(bean.data.seller.mobile);
                 mTime.setText(bean.data.seller.shopstart + "-" + bean.data.seller.shopend);
                 mAddr.setText(bean.data.seller.addr);
-                mRate.setText(bean.data.seller.line_rate + "(数据线)" + "\n" + bean.data.seller.cabinet_rate + "(充电宝)");
+               // mRate.setText(bean.data.seller.line_rate + "(数据线)" + "\n" + bean.data.seller.cabinet_rate + "(充电宝)");
+                mRate.setText(bean.data.seller.line_rate+"%");
                 mRate1.setText("1.充电2小时" + bean.data.seller.line_hour_2+"元");
                 mRate2.setText("2.充电6小时" + bean.data.seller.line_hour_6+"元");
                 mRate3.setText("3.充电12小时" + bean.data.seller.line_hour_12+"元");

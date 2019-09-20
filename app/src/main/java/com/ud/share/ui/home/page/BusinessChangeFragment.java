@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,14 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
+import com.ud.share.event.ChangePhoneEvent;
+import com.ud.share.event.ChangePhoneEvent2;
+import com.ud.share.event.Event;
+import com.ud.share.event.FreshBusinessEvent;
+import com.ud.share.ui.ChangePhone.PhoneSmsFragment;
+import com.ud.share.ui.ChangePhone.SmsFragment;
 import com.walkermanx.photopicker.PhotoPicker;
 import com.ud.share.R;
 import com.ud.share.base.BaseFragment;
@@ -24,7 +33,12 @@ import com.ud.share.model.ImgBean;
 import com.ud.share.net.AppUrl;
 import com.ud.share.net.HttpUtil;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.jaaksi.pickerview.topbar.DefaultTopBar;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,8 +54,6 @@ import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
 public class BusinessChangeFragment extends BaseFragment {
-
-
     @BindView(R.id.bar)
     QMUITopBarLayout mBar;
     @BindView(R.id.name)
@@ -68,6 +80,10 @@ public class BusinessChangeFragment extends BaseFragment {
     EditText mRateLine;
     @BindView(R.id.rate_package)
     EditText mRatePackage;
+
+
+    @BindView(R.id.changePhone)
+    TextView mChangePhone;
     private BusinessDetailBean mBusinessDetailBean;
 
 
@@ -86,6 +102,7 @@ public class BusinessChangeFragment extends BaseFragment {
 
     @Override
     protected void init() {
+        EventBus.getDefault().register(this);
         mBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +118,9 @@ public class BusinessChangeFragment extends BaseFragment {
                 getBusinessChange();
             }
         });
+
+        mMobile.setEnabled(false);
+        mContact.setEnabled(false);
 
 
         ((TextView) t1.findViewById(R.id.section_name)).setText("商户图片");
@@ -175,12 +195,12 @@ public class BusinessChangeFragment extends BaseFragment {
             map.put("latitude", latitude);
             map.put("longitude", longitude);
         }
-        if (!TextUtils.isEmpty(contacts)) {
-            map.put("contacts", contacts);
-        }
-        if (!TextUtils.isEmpty(mobile)) {
-            map.put("mobile", mobile);
-        }
+//        if (!TextUtils.isEmpty(contacts)) {
+//            map.put("contacts", contacts);
+//        }
+//        if (!TextUtils.isEmpty(mobile)) {
+//            map.put("mobile", mobile);
+//        }
 
 //        map.put("per_price","");
 //        map.put("per_ceiling","");
@@ -210,6 +230,7 @@ public class BusinessChangeFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String s) throws IOException {
+                        EventBus.getDefault().post(new FreshBusinessEvent());
                         BaseJson json = JSON.parseObject(s, BaseJson.class);
                         showToast(json.msg);
                         popBackStack();
@@ -237,7 +258,7 @@ public class BusinessChangeFragment extends BaseFragment {
                 });
     }
 
-    @OnClick({R.id.photo, R.id.iv_time, R.id.iv_addr})
+    @OnClick({R.id.photo, R.id.iv_time, R.id.iv_addr,R.id.changePhone})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.photo:
@@ -281,6 +302,13 @@ public class BusinessChangeFragment extends BaseFragment {
 
             case R.id.iv_addr:
                 startActivityForResult(new Intent(getActivity(), MapActivity.class), 999);
+                break;
+
+            case R.id.changePhone:
+
+
+                startFragment(PhoneSmsFragment.getInstance(mBusinessDetailBean.data.seller.sid,"2"));
+
                 break;
 
         }
@@ -339,5 +367,10 @@ public class BusinessChangeFragment extends BaseFragment {
 
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(ChangePhoneEvent2 event) {
+        mMobile.setText(event.phone);
+    }
 
 }

@@ -135,22 +135,22 @@ public class AppData {
         public String hint = "";
     }
 
-    public static final String[] agent_title = {"姓  名:", "联系方式:", "设置线分润:", "设置柜分润:", "设置冻结金额:"};
+    public static final String[] agent_title = {"代理商名称:", "姓  名:", "联系方式:", "设置线分润:", "设置冻结金额:"};
     public static final String[] agent_hint = {"请输入下级代理姓名", "请输入联系方式", "设置下级代理的分润比例", "设置下级代理的分润比例", "输入下级冻结金额(元)"};
-    public static final String[] agent_des = {"", "注：联系方式需要是有效电话，并且用于代理商登录APP后台账户。", "", "注：例如自己分润为80%，设置下级分润可输入80%以下的数值！", "注：下级用户为自我提现，设置下级用户冻结金额，下级代理只能提现超出冻结金额以外的部分。冻结金额后期可以修改。"};
+    public static final String[] agent_des = {"", "", "注：联系方式需要是有效电话，并且用于代理商登录APP后台账户。", "注：例如自己分润为80%，设置下级分润可输入80%以下的数值", "注：下级用户为自我提现，设置下级用户冻结金额，下级代理只能提现超出冻结金额以外的部分。冻结金额后期可以修改。"};
 
-    public static List<AgentInfoBean> getInitAgentInfo() {
-        List<AgentInfoBean> ls = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            AgentInfoBean bean = new AgentInfoBean();
-            bean.title = agent_title[i];
-            bean.hint = agent_hint[i];
-            bean.des = agent_des[i];
-            ls.add(bean);
-        }
-
-        return ls;
-    }
+//    public static List<AgentInfoBean> getInitAgentInfo() {
+//        List<AgentInfoBean> ls = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            AgentInfoBean bean = new AgentInfoBean();
+//            bean.title = agent_title[i];
+//            bean.hint = agent_hint[i];
+//            bean.des = agent_des[i];
+//            ls.add(bean);
+//        }
+//
+//        return ls;
+//    }
 
 
     public static List<AgentInfoBean> getAgentInfo(String json) {
@@ -163,10 +163,11 @@ public class AppData {
             bean.des = agent_des[i];
             ls.add(bean);
         }
-        ls.get(0).content = dataBean.real_name;
-        ls.get(1).content = dataBean.phone;
-        ls.get(2).content = dataBean.line_rate;
-        ls.get(3).content = dataBean.cabinet_rate;
+        ls.get(0).content = dataBean.agent_name;
+        ls.get(1).content = dataBean.real_name;
+        ls.get(2).content = dataBean.phone;
+        ls.get(3).content = dataBean.line_rate;
+//        ls.get(4).content = dataBean.cabinet_rate;
         ls.get(4).content = dataBean.deposit;
 
         return ls;
@@ -189,9 +190,9 @@ public class AppData {
 
 
     public static final int[] HOME_BOT2_ICON = {R.mipmap.home_1, R.mipmap.home_2, R.mipmap.home_3, R.mipmap.home_4, R.mipmap.home_5, R.mipmap.home_6,
-            R.mipmap.home_7, R.mipmap.home_8, R.mipmap.home_9, R.mipmap.home_10, R.mipmap.home_11};
+            R.mipmap.home_8, R.mipmap.home_10};
     public static final String[] HOME_BOT2 = {"商户列表", "代理商列表", "设备列表", "订单列表", "收益明细"
-            , "收益提取", "佣金管理", "分润设置", "设备故障", "幽电分享", "超级用户"};
+            , "收益提取", "分润设置", "幽电分享"};
 
 
     public static List<ImgTitleBean> getHomeMid2() {
